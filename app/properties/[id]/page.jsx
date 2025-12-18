@@ -14,6 +14,8 @@ const PropertyPage = async ({ params, searchParams }) => {
   const propertyDoc = await Property.findById(params.id).lean();
   const property = convertToSerializableObject(propertyDoc)
 
+
+
   if(!property){
     return <h1 className="text-center text-2xl font-bold mt-10">Property not found</h1>
   }
