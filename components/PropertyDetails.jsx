@@ -8,6 +8,8 @@ import {
   FaMap,
 } from "react-icons/fa";
 
+import PropertyMap from "./PropertyMap";
+
 const PropertyDetails = ({ property }) => {
   return (
     <main>
@@ -60,11 +62,11 @@ const PropertyDetails = ({ property }) => {
         <h3 className="text-lg font-bold mb-6">Description & Details</h3>
         <div className="flex justify-center gap-4 text-blue-500 mb-4 text-xl space-x-9">
           <p>
-            <FaBed className="inline-block mr-2" />{property.beds} {" "}
-            <span className="hidden sm:inline">Beds</span>
+            <FaBed className="inline-block mr-2" />
+            {property.beds} <span className="hidden sm:inline">Beds</span>
           </p>
           <p>
-            <FaBath className="inline-block mr-2" /> {property.baths} {" "}
+            <FaBath className="inline-block mr-2" /> {property.baths}{" "}
             <span className="hidden sm:inline">Baths</span>
           </p>
           <p>
@@ -82,14 +84,16 @@ const PropertyDetails = ({ property }) => {
         <ul className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 list-none">
           {property.amenities.map((amenity, index) => (
             <li key={index}>
-              <FaCheck className="inline-block text-green-600 mr-2" /> 
+              <FaCheck className="inline-block text-green-600 mr-2" />
               {amenity}
             </li>
           ))}
         </ul>
       </div>
       <div className="bg-white p-6 rounded-lg shadow-md mt-6">
-        <div id="map"></div>
+        <div id="map">
+          <PropertyMap property={property} />
+        </div>
       </div>
     </main>
   );

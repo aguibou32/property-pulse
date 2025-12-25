@@ -5,8 +5,8 @@ const PropertyHeaderImage = ({image}) => {
 
   return (
     <section>
-      <div class="container-xl m-auto">
-        <div class="grid grid-cols-1">
+      <div className="container-xl m-auto">
+        <div className="grid grid-cols-1">
           <Image
             width={0}
             height={0}

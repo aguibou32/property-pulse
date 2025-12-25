@@ -6,8 +6,6 @@ import deleteProperty from "@/app/actions/deleteProperty";
 import { toast } from "react-toastify";
 
 
-
-
 const ProfileProperties = ({ properties: initialProperties }) => {
   const [properties, setProperties] = useState(initialProperties);
 
