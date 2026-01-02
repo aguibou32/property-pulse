@@ -10,9 +10,7 @@ import { usePathname } from "next/navigation";
 import { signIn, signOut, useSession, getProviders } from "next-auth/react";
 
 function Navbar() {
-  const { data: session } = useSession();
-
-  // console.log(session); // This will output the user. 
+  const { data: session, status } = useSession();
 
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
   const [isProfileMenuOpen, setIsProfileMenuOpen] = useState(false);
@@ -140,7 +138,7 @@ function Navbar() {
           </div>
 
           {/* <!-- Right Side Menu (Logged Out) --> */}
-          {!session && (
+          {!session && status !== "loading" && (
             <div className="hidden md:block md:ml-6">
               <div className="flex items-center">
                 {providers &&
@@ -207,6 +205,7 @@ function Navbar() {
                       src={session?.user?.image || profileDefault}
                       width={40}
                       height={40}
+                      alt="User Profile"
                     />
                   </button> 
                 </div>
@@ -243,7 +242,10 @@ function Navbar() {
                       Saved Properties
                     </Link>
                     <button
-                      onClick={() => signOut()}
+                      onClick={() => {
+                        setIsProfileMenuOpen(false);
+                        signOut({ callbackUrl: "/" });
+                      }}
                       className="block px-4 py-2 text-sm text-gray-700"
                       role="menuitem"
                       tabIndex="-1"
@@ -290,7 +292,7 @@ function Navbar() {
                 Add Property
               </Link>
             )}
-            {!session && providers && (
+            {!session && status !== "loading" && providers && (
               Object.values(providers).map((provider, index) => (
                 <button
                   key={index}

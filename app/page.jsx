@@ -4,8 +4,6 @@ import InfoBoxes from "@/components/InfoBoxes";
 
 import connectDB from "./config/database";
 
-
-
 const HomePage = () => {
 
   connectDB()
