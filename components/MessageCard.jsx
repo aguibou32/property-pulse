@@ -2,6 +2,7 @@
 import { useState } from "react";
 import { toast } from "react-toastify";
 import markMessageAsRead from "@/app/actions/markMessageAsRead";
+import deleteMessage from "@/app/actions/deleteMessage";
 
 
 const MessageCard = ({ message }) => {
@@ -12,7 +13,7 @@ const MessageCard = ({ message }) => {
     try {
       const read = await markMessageAsRead(message._id)
       setIsRead(read)
-      toast.success(`Marked as ${read ? 'read': 'new'}`)
+      toast.success(`Marked as ${read ? 'Read': 'New'}`)
 
     } catch (error) {
       console.error(error);
@@ -22,14 +23,10 @@ const MessageCard = ({ message }) => {
 
   const handleDeleteClick = async () => {
     try {
-      const res = await fetch(`/api/messages/${message._id}`, {
-        method: "DELETE",
-      });
+      await deleteMessage(message._id)
+      toast.success('Message deleted')
 
-      if (res.status === 200) {
-        setIsDeleted(true);
-        toast.success("Message deleted");
-      }
+      
     } catch (error) {
       console.error(error);
       toast.error("Something went wrong");
@@ -37,7 +34,7 @@ const MessageCard = ({ message }) => {
   };
 
   if (isDeleted) {
-    return null;
+    return <p>Deleted message !</p>;
   }
 
   return (
