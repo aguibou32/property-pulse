@@ -9,7 +9,7 @@ const GlobalContext = createContext()
 
 // Create Provider
 export function GlobalProvider({children}){
-    const [unreadCount, setUnreadCount] = useState(3)
+    const [unreadCount, setUnreadCount] = useState(0)
 
     const {data: session} = useSession()
 
