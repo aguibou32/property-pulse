@@ -3,6 +3,7 @@ import HomeProperties from "@/components/HomeProperties";
 import InfoBoxes from "@/components/InfoBoxes";
 
 import connectDB from "./config/database";
+import FeaturedProperties from "@/components/FeaturedProperties";
 
 const HomePage = () => {
 
@@ -12,6 +13,7 @@ const HomePage = () => {
     <>
       <Hero />
       <InfoBoxes />
+      <FeaturedProperties />
       <HomeProperties />
     </>
   );
