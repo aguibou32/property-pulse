@@ -12,13 +12,13 @@ import 'photoswipe/dist/photoswipe.css'
 const inter = Inter({
   subsets: ["latin"],
   display: "swap",
-});
+})
 
 export const metadata = {
   title: "Property Pulse",
   keywords: "rental, property, real state",
-  description: "Find the perfect rental property",
-};
+  description: "Find the perfect rental property"
+}
 
 const MainLayout = ({ children }) => {
   return (
@@ -34,7 +34,7 @@ const MainLayout = ({ children }) => {
         </html>
       </GlobalProvider>
     </AuthProvider>
-  );
-};
+  )
+}
 
 export default MainLayout;
