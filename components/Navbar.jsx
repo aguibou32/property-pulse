@@ -63,14 +63,14 @@ function Navbar() {
 
   return (
     <nav className="bg-blue-700 border-b border-blue-500">
-      <div className="mx-auto max-w-7xl px-2 sm:px-6 lg:px-8">
-        <div className="relative flex h-20 items-center justify-between">
+      <div className="mx-auto max-w-7xl px-2 lg:px-8 sm:px-6">
+        <div className="h-20 relative flex justify-between items-center">
           <div className="absolute inset-y-0 left-0 flex items-center md:hidden">
             {/* <!-- Mobile menu button--> */}
             <button
               type="button"
               id="mobile-dropdown-button"
-              className="relative inline-flex items-center justify-center rounded-md p-2 text-gray-400 hover:bg-gray-700 hover:text-white focus:outline-none focus:ring-2 focus:ring-inset focus:ring-white"
+              className="relative inline-flex justify-center items-center p-2 text-gray-400 rounded-md focus:outline-none focus:ring-2 focus:ring-inset focus:ring-white hover:text-white hover:bg-gray-700"
               aria-controls="mobile-menu"
               aria-expanded="false"
               onClick={() => setIsMobileMenuOpen((prevState) => !prevState)}
@@ -79,7 +79,7 @@ function Navbar() {
               <span className="absolute -inset-0.5"></span>
               <span className="sr-only">Open main menu</span>
               <svg
-                className="block h-6 w-6"
+                className="w-6 h-6 block"
                 fill="none"
                 viewBox="0 0 24 24"
                 strokeWidth="1.5"
@@ -95,18 +95,18 @@ function Navbar() {
             </button>
           </div>
 
-          <div className="flex flex-1 items-center justify-center md:items-stretch md:justify-start">
+          <div className="flex flex-1 justify-center items-center md:justify-start md:items-stretch">
             {/* <!-- Logo --> */}
-            <Link className="flex flex-shrink-0 items-center" href="/">
-              <Image className="h-10 w-auto" src={logo} alt="PropertyPulse" />
+            <Link className="flex-shrink-0 flex items-center" href="/">
+              <Image className="w-auto h-10" src={logo} alt="PropertyPulse" />
 
-              <span className="hidden md:block text-white text-2xl font-bold ml-2">
+              <span className="hidden ml-2 text-2xl font-bold text-white md:block">
                 PropertyPulse
               </span>
             </Link>
             {/* s Desktop Menu Hidden below md screens --> */}
 
-            <div className="hidden md:ml-6 md:block">
+            <div className="hidden md:block md:ml-6">
               <div className="flex space-x-2">
                 <Link
                   href="/"
@@ -147,9 +147,9 @@ function Navbar() {
                     <button
                       key={index}
                       onClick={()=> signIn(provider.id)}
-                      className="flex items-center text-white bg-gray-700 hover:bg-gray-900 hover:text-white rounded-md px-3 py-2"
+                      className="flex items-center px-3 py-2 text-white bg-gray-700 rounded-md hover:text-white hover:bg-gray-900"
                     >
-                      <FaGoogle className="text-white mr-2" />
+                      <FaGoogle className="mr-2 text-white" />
                       <span>Login or Register</span>
                     </button>
                   ))}
@@ -158,16 +158,16 @@ function Navbar() {
           )}
           {/* <!-- Right Side Menu (Logged In) --> */}
           {session && (
-            <div className="absolute inset-y-0 right-0 flex items-center pr-2 md:static md:inset-auto md:ml-6 md:pr-0">
+            <div className="absolute inset-y-0 right-0 flex items-center pr-2 md:static md:inset-auto md:pr-0 md:ml-6">
               <Link href="/messages" className="relative group">
                 <button
                   type="button"
-                  className="relative rounded-full bg-gray-800 p-1 text-gray-400 hover:text-white focus:outline-none focus:ring-2 focus:ring-white focus:ring-offset-2 focus:ring-offset-gray-800"
+                  className="relative p-1 text-gray-400 bg-gray-800 rounded-full focus:outline-none focus:ring-2 focus:ring-white focus:ring-offset-2 focus:ring-offset-gray-800 hover:text-white"
                 >
                   <span className="absolute -inset-1.5"></span>
                   <span className="sr-only">View notifications</span>
                   <svg
-                    className="h-6 w-6"
+                    className="w-6 h-6"
                     fill="none"
                     viewBox="0 0 24 24"
                     strokeWidth="1.5"
@@ -188,7 +188,7 @@ function Navbar() {
                 <div>
                   <button
                     type="button"
-                    className="relative flex rounded-full bg-gray-800 text-sm focus:outline-none focus:ring-2 focus:ring-white focus:ring-offset-2 focus:ring-offset-gray-800"
+                    className="relative flex text-sm bg-gray-800 rounded-full focus:outline-none focus:ring-2 focus:ring-white focus:ring-offset-2 focus:ring-offset-gray-800"
                     id="user-menu-button"
                     aria-expanded="false"
                     aria-haspopup="true"
@@ -199,7 +199,7 @@ function Navbar() {
                     <span className="absolute -inset-1.5"></span>
                     <span className="sr-only">Open user menu</span>
                     <Image
-                      className="h-8 w-8 rounded-full"
+                      className="w-8 h-8 rounded-full"
                       src={session?.user?.image || profileDefault}
                       width={40}
                       height={40}
@@ -212,7 +212,7 @@ function Navbar() {
                 {isProfileMenuOpen && (
                   <div
                     id="user-menu"
-                    className="absolute right-0 z-10 mt-2 w-48 origin-top-right rounded-md bg-white py-1 shadow-lg ring-1 ring-black ring-opacity-5 focus:outline-none"
+                    className="ring-opacity-5 w-48 absolute right-0 z-10 py-1 mt-2 bg-white rounded-md ring-1 ring-black shadow-lg origin-top-right focus:outline-none"
                     role="menu"
                     aria-orientation="vertical"
                     aria-labelledby="user-menu-button"
@@ -262,7 +262,7 @@ function Navbar() {
       {/* <!-- Mobile menu, show/hide based on menu state. --> */}
       {isMobileMenuOpen && (
         <div id="mobile-menu" ref={mobileMenuRef}>
-          <div className="space-y-1 px-2 pb-3 pt-2">
+          <div className="px-2 pt-2 pb-3 space-y-1">
             <Link
               href="/"
               className={`${
@@ -295,7 +295,7 @@ function Navbar() {
                 <button
                   key={index}
                   onClick={() => signIn(provider.id)}
-                  className="flex items-center text-white bg-gray-700 hover:bg-gray-900 hover:text-white rounded-md px-3 py-2 my-5"
+                  className="flex items-center px-3 py-2 my-5 text-white bg-gray-700 rounded-md hover:text-white hover:bg-gray-900"
                 >
                   <FaGoogle className="mr-2" />
                   <span>Login or Register</span>
